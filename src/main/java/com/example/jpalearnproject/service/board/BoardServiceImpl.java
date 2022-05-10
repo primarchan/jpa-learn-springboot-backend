@@ -3,6 +3,7 @@ package com.example.jpalearnproject.service.board;
 import com.example.jpalearnproject.domain.board.Board;
 import com.example.jpalearnproject.domain.board.BoardRepository;
 import com.example.jpalearnproject.dto.board.BoardRequestDTO;
+import com.example.jpalearnproject.dto.board.BoardResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,17 +16,20 @@ public class BoardServiceImpl implements BoardService {
     private final BoardRepository boardRepository;
 
     @Override
-    public void save(BoardRequestDTO boardRequestDTO) {
-        boardRepository.save(boardRequestDTO.toEntity());
+    public Long boardSave(BoardRequestDTO boardRequestDTO) {
+        Board board = boardRepository.save(boardRequestDTO.toEntity());
+        return board.getId();
     }
 
     @Override
-    public BoardRequestDTO read() {
-        return null;
+    public BoardResponseDTO boardFindById(Long id){
+        Board board = boardRepository.findById(id).get();
+        return new BoardResponseDTO(board);
     }
 
     @Override
-    public List<BoardRequestDTO> getList() {
-        return null;
+    public List<Board> boardFindAll() {
+
+        return boardRepository.findAll();
     }
 }

@@ -9,6 +9,8 @@ import org.springframework.data.annotation.LastModifiedDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 @Data
 @Slf4j
@@ -30,13 +32,14 @@ public class BoardResponseDTO {
     private String modify_date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 
     /* Entity -> DTO */
+    @Builder
     public BoardResponseDTO(Board board) {
+        this.id = board.getId();
         this.title = board.getTitle();
         this.content = board.getContent();
         this.writer = board.getWriter();
         this.reg_date = board.getReg_date();
         this.modify_date = board.getModify_date();
     }
-
 
 }
