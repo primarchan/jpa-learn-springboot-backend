@@ -1,5 +1,6 @@
 package com.example.jpalearnproject.domain.board;
 
+import com.example.jpalearnproject.dto.board.BoardRequestDTO;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -47,6 +48,13 @@ public class Board {
         this.writer = writer;
         this.reg_date = reg_date;
         this.modify_date = modify_date;
+    }
+
+    public void update(BoardRequestDTO boardRequestDTO) {
+        this.title = boardRequestDTO.getTitle();
+        this.content = boardRequestDTO.getContent();
+        this.writer = boardRequestDTO.getWriter();
+        this.modify_date = boardRequestDTO.getModify_date();
     }
 
 }
