@@ -57,6 +57,7 @@ public class BoardController {
     @PutMapping("/{id}")
     public ResponseEntity<Message> modify(@PathVariable Long id, @RequestBody BoardRequestDTO boardRequestDTO) {
         Long boardId = boardService.boardModify(id, boardRequestDTO);
+
         Message message = new Message();
         message.setStatus(StatusEnum.OK);
         message.setMessage("성공 코드");
@@ -65,7 +66,7 @@ public class BoardController {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
 
-        return new ResponseEntity<Message>(message, httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(message, httpHeaders, HttpStatus.OK);
     }
 
     // 게시글 삭제

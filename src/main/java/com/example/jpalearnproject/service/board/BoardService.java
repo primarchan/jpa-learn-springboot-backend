@@ -49,7 +49,6 @@ public class BoardService {
 
     @Transactional
     public void boardRemove(Long id) {
-        Board board = boardRepository.findById(id).get();
-        boardRepository.delete(board);
+        boardRepository.deleteById(id);
     }
 }
