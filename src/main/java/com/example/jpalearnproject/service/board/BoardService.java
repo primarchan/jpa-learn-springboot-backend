@@ -1,10 +1,13 @@
 package com.example.jpalearnproject.service.board;
 
+import com.example.jpalearnproject.common.exception.BoardException;
 import com.example.jpalearnproject.domain.board.Board;
 import com.example.jpalearnproject.domain.board.BoardRepository;
 import com.example.jpalearnproject.dto.board.BoardRequestDTO;
 import com.example.jpalearnproject.dto.board.BoardResponseDTO;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class BoardService {
 
@@ -24,8 +28,9 @@ public class BoardService {
     }
 
     @Transactional
-    public BoardResponseDTO boardFindById(Long id){
-        Board board = boardRepository.findById(id).get();
+    public BoardResponseDTO boardFindById(Long id) throws Exception{
+        Board board = boardRepository.findById(id).orElseThrow(() -> new BoardException(HttpStatus.NOT_FOUND, id + "번 게시글이 존재하지않습니다."));
+        // Board board = boardRepository.findById(id).get();
         return new BoardResponseDTO(board);
     }
 

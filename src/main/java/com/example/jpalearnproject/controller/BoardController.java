@@ -43,7 +43,7 @@ public class BoardController {
 
     // 게시글 조회
     @GetMapping("/{id}")
-    public BoardResponseDTO read(@PathVariable Long id) {
+    public BoardResponseDTO read(@PathVariable Long id) throws Exception{
         return boardService.boardFindById(id);
     }
 

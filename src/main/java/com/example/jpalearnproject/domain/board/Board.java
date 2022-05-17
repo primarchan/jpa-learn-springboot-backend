@@ -4,6 +4,7 @@ import com.example.jpalearnproject.dto.board.BoardRequestDTO;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor
+@ToString
 @Entity(name = "BOARD")
 public class Board {
 
