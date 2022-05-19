@@ -30,10 +30,7 @@ public class BoardController {
     public ResponseEntity<Message> write(@RequestBody BoardRequestDTO boardRequestDTO) {
         Long boardId = boardService.boardSave(boardRequestDTO);
 
-        Message message = new Message();
-        message.setStatus(StatusEnum.OK);
-        message.setMessage("성공 코드");
-        message.setData(boardId + "번 게시물이 등록되었습니다.");
+        Message message = new Message(StatusEnum.OK, "성공 코드", boardId + "번 게시물이 등록되었습니다.");
 
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
@@ -58,10 +55,7 @@ public class BoardController {
     public ResponseEntity<Message> modify(@PathVariable Long id, @RequestBody BoardRequestDTO boardRequestDTO) {
         Long boardId = boardService.boardModify(id, boardRequestDTO);
 
-        Message message = new Message();
-        message.setStatus(StatusEnum.OK);
-        message.setMessage("성공 코드");
-        message.setData(boardId + "번 게시물이 수정되었습니다.");
+        Message message = new Message(StatusEnum.OK, "성공 코드", boardId + "번 게시물이 수정되었습니다.");
 
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));

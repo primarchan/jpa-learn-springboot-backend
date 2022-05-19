@@ -53,6 +53,7 @@ public class BoardService {
 
     @Transactional
     public void boardRemove(Long id) {
+        boardRepository.findById(id).orElseThrow(() -> new BoardException(HttpStatus.NOT_FOUND, id + "번 게시글이 존재하지않습니다."));
         boardRepository.deleteById(id);
     }
 }
