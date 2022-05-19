@@ -30,7 +30,6 @@ public class BoardService {
     @Transactional
     public BoardResponseDTO boardFindById(Long id) {
         Board board = boardRepository.findById(id).orElseThrow(() -> new BoardException(HttpStatus.NOT_FOUND, id + "번 게시글이 존재하지않습니다."));
-        // Board board = boardRepository.findById(id).get();
         return new BoardResponseDTO(board);
     }
 
