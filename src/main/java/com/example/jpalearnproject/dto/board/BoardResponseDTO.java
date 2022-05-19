@@ -41,5 +41,4 @@ public class BoardResponseDTO {
         this.reg_date = board.getReg_date();
         this.modify_date = board.getModify_date();
     }
-
 }
