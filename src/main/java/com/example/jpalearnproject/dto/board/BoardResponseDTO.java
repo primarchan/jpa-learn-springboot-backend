@@ -38,7 +38,7 @@ public class BoardResponseDTO {
         this.title = board.getTitle();
         this.content = board.getContent();
         this.writer = board.getWriter();
-        this.reg_date = board.getReg_date();
-        this.modify_date = board.getModify_date();
+        this.reg_date = board.getRegDate();
+        this.modify_date = board.getModifyDate();
     }
 }

@@ -25,9 +25,9 @@ public class BoardRequestDTO {
 
     private String writer;
 
-    private String reg_date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+    private String regDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 
-    private String modify_date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+    private String modifyDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 
     /* DTO -> Entity */
     public Board toEntity() {
@@ -35,12 +35,10 @@ public class BoardRequestDTO {
                 .title(title)
                 .content(content)
                 .writer(writer)
-                .reg_date(reg_date)
-                .modify_date(modify_date)
+                .reg_date(regDate)
+                .modify_date(modifyDate)
                 .build();
-
         return board;
     }
-
 
 }
