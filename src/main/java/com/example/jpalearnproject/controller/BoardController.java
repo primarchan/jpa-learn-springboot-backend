@@ -29,7 +29,6 @@ public class BoardController {
     @PostMapping("/write")
     public ResponseEntity<Message> boardWrite(@RequestBody BoardRequestDTO boardRequestDTO) {
         Long boardId = boardService.boardSave(boardRequestDTO);
-
         Message message = new Message(StatusEnum.OK, "성공 코드", boardId + "번 게시물이 등록되었습니다.");
 
         HttpHeaders httpHeaders = new HttpHeaders();
